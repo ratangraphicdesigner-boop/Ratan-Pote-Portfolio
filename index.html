@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#1a1a1a;--accent:#f5c518;--gray:#666;--light:#f8f8f8;--white:#fff}
+:root{--primary:#1a1a1a;--accent:#e05a33;--gray:#666;--light:#f8f8f8;--white:#fff}
 body{font-family:'Inter',sans-serif;color:var(--primary);line-height:1.6;background:var(--white)}
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 a{color:inherit;text-decoration:none}
@@ -19,8 +19,16 @@ nav .container{display:flex;justify-content:space-between;align-items:center}
 .nav-links{display:flex;gap:32px}
 .nav-links a{font-size:0.9rem;color:var(--gray);transition:color 0.3s}
 .nav-links a:hover{color:var(--primary)}
-.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:101}
 .menu-btn span{display:block;width:24px;height:2px;background:var(--primary);margin:5px 0;transition:0.3s}
+.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile Menu */
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--white);flex-direction:column;justify-content:center;align-items:center;gap:32px;z-index:99}
+.mobile-menu.active{display:flex}
+.mobile-menu a{font-size:1.5rem;color:var(--primary);font-weight:600}
 
 /* Hero */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:80px}
@@ -49,22 +57,31 @@ section{padding:100px 0}
 
 /* About */
 .about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:start}
-.about-image img{width:100%;border-radius:12px}
+.about-slider{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5}
+.about-slider img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s ease-in-out}
+.about-slider img.active{opacity:1}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.slider-dots span{width:8px;height:8px;border-radius:50%;background:#ddd;cursor:pointer;transition:background 0.3s}
+.slider-dots span.active{background:var(--accent)}
+
+/* Skills with icons */
 .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
-.skill-tag{padding:10px 16px;background:var(--light);border-radius:6px;font-size:0.85rem;text-align:center}
+.skill-tag{padding:12px 16px;background:var(--light);border-radius:8px;font-size:0.85rem;display:flex;align-items:center;gap:10px}
+.skill-tag svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.5}
 
 /* Services */
 .services{background:var(--light)}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.service-card{background:var(--white);padding:32px;border-radius:12px;transition:transform 0.3s,box-shadow 0.3s}
+.service-card{background:var(--white);padding:32px;border-radius:12px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
 .service-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.08)}
 .service-icon{width:48px;height:48px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.5rem}
 .service-card h3{font-size:1.1rem;margin-bottom:12px}
 .service-card p{color:var(--gray);font-size:0.9rem}
+.service-card .arrow{margin-top:16px;color:var(--accent);font-size:0.85rem;display:flex;align-items:center;gap:6px}
 
 /* Portfolio */
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.portfolio-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.portfolio-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;display:block}
 .portfolio-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
 .portfolio-item:hover img{transform:scale(1.1)}
 .portfolio-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;opacity:0;transition:opacity 0.3s}
@@ -83,9 +100,10 @@ section{padding:100px 0}
 
 /* Software */
 .software-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
-.software-item{text-align:center;padding:24px;background:var(--light);border-radius:12px}
-.software-item .icon{font-size:2rem;margin-bottom:12px}
-.software-item h4{font-size:0.9rem;margin-bottom:4px}
+.software-item{text-align:center;padding:24px 16px;background:var(--light);border-radius:12px}
+.software-item .icon{width:48px;height:48px;margin:0 auto 12px;border-radius:8px;overflow:hidden}
+.software-item .icon img{width:100%;height:100%;object-fit:contain}
+.software-item h4{font-size:0.85rem;margin-bottom:4px}
 .software-item p{font-size:0.75rem;color:var(--gray)}
 
 /* Contact */
@@ -102,7 +120,7 @@ section{padding:100px 0}
 .contact-form input,.contact-form textarea{padding:16px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:var(--white);font-family:inherit;font-size:0.95rem}
 .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.5)}
 .contact-form textarea{min-height:120px;resize:vertical}
-.contact-form .btn{background:var(--accent);color:var(--primary);border:none;cursor:pointer}
+.contact-form .btn{background:var(--accent);color:var(--white);border:none;cursor:pointer}
 
 /* Footer */
 footer{background:var(--primary);color:rgba(255,255,255,0.6);padding:24px 0;border-top:1px solid rgba(255,255,255,0.1)}
@@ -133,10 +151,20 @@ footer p{font-size:0.85rem}
 .portfolio-grid{grid-template-columns:1fr}
 .stats{flex-direction:column;gap:24px}
 footer .container{flex-direction:column;gap:16px;text-align:center}
+.software-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
 <body>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+<a href="#about" onclick="closeMenu()">About</a>
+<a href="#services" onclick="closeMenu()">Services</a>
+<a href="work.html" onclick="closeMenu()">Work</a>
+<a href="#experience" onclick="closeMenu()">Experience</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
 
 <nav>
 <div class="container">
@@ -148,7 +176,7 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <a href="#experience">Experience</a>
 <a href="#contact">Contact</a>
 </div>
-<button class="menu-btn"><span></span><span></span><span></span></button>
+<button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </div>
 </nav>
 
@@ -168,7 +196,7 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 </div>
 </div>
 <div class="hero-image">
-<img src="profile.jpg" alt="Ratan Pote">
+<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face" alt="Ratan Pote">
 </div>
 </div>
 </div>
@@ -177,8 +205,23 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <section id="about">
 <div class="container">
 <div class="about-grid">
-<div class="about-image">
-<img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=500&h=600&fit=crop" alt="Design workspace">
+<div>
+<div class="about-slider" id="aboutSlider">
+<img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=500&h=600&fit=crop" alt="Brand Identity" class="active">
+<img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=600&fit=crop" alt="Print Design">
+<img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&h=600&fit=crop" alt="Social Media">
+<img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=500&h=600&fit=crop" alt="Packaging">
+<img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=500&h=600&fit=crop" alt="Presentations">
+<img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=500&h=600&fit=crop" alt="Publications">
+</div>
+<div class="slider-dots" id="sliderDots">
+<span class="active" onclick="goToSlide(0)"></span>
+<span onclick="goToSlide(1)"></span>
+<span onclick="goToSlide(2)"></span>
+<span onclick="goToSlide(3)"></span>
+<span onclick="goToSlide(4)"></span>
+<span onclick="goToSlide(5)"></span>
+</div>
 </div>
 <div class="about-content">
 <h2 class="section-title">About Me</h2>
@@ -187,14 +230,14 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <br>
 <p>I specialize in brand identity, marketing collateral, packaging design, and digital content creation. Whether it's a startup looking for their first logo or an established company needing a complete marketing overhaul, I bring the same level of creativity and dedication to every project.</p>
 <div class="skills-grid">
-<span class="skill-tag">Brand Identity</span>
-<span class="skill-tag">Print Design</span>
-<span class="skill-tag">Social Media</span>
-<span class="skill-tag">Packaging</span>
-<span class="skill-tag">Typography</span>
-<span class="skill-tag">Marketing Materials</span>
-<span class="skill-tag">Infographics</span>
-<span class="skill-tag">Presentations</span>
+<span class="skill-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Brand Identity</span>
+<span class="skill-tag"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>Print Design</span>
+<span class="skill-tag"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Social Media</span>
+<span class="skill-tag"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Packaging</span>
+<span class="skill-tag"><svg viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>Typography</span>
+<span class="skill-tag"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Marketing Materials</span>
+<span class="skill-tag"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Infographics</span>
+<span class="skill-tag"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>Presentations</span>
 </div>
 </div>
 </div>
@@ -206,36 +249,42 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <h2 class="section-title">What I Do</h2>
 <p class="section-subtitle">Comprehensive design solutions tailored to your needs</p>
 <div class="services-grid">
-<div class="service-card">
+<a href="work.html?cat=branding" class="service-card">
 <div class="service-icon">🎨</div>
 <h3>Brand Identity</h3>
 <p>Logos, color systems, and visual guidelines that capture your brand's essence and make a lasting impression.</p>
-</div>
-<div class="service-card">
+<span class="arrow">View Work →</span>
+</a>
+<a href="work.html?cat=print" class="service-card">
 <div class="service-icon">📄</div>
 <h3>Print Design</h3>
 <p>Brochures, flyers, catalogs, and marketing materials designed for impact and professional quality.</p>
-</div>
-<div class="service-card">
+<span class="arrow">View Work →</span>
+</a>
+<a href="work.html?cat=social-media" class="service-card">
 <div class="service-icon">📱</div>
 <h3>Digital & Social Media</h3>
 <p>Eye-catching graphics optimized for social platforms that boost engagement and brand visibility.</p>
-</div>
-<div class="service-card">
+<span class="arrow">View Work →</span>
+</a>
+<a href="work.html?cat=packaging" class="service-card">
 <div class="service-icon">📦</div>
 <h3>Packaging Design</h3>
 <p>Creative packaging solutions that stand out on shelves and communicate your product's value.</p>
-</div>
-<div class="service-card">
+<span class="arrow">View Work →</span>
+</a>
+<a href="work.html?cat=presentations" class="service-card">
 <div class="service-icon">📊</div>
 <h3>Presentations</h3>
 <p>Professional corporate presentations and pitch decks that communicate ideas clearly and persuasively.</p>
-</div>
-<div class="service-card">
+<span class="arrow">View Work →</span>
+</a>
+<a href="work.html?cat=publications" class="service-card">
 <div class="service-icon">✏️</div>
 <h3>Illustration & Infographics</h3>
 <p>Custom illustrations and data visualizations that simplify complex information beautifully.</p>
-</div>
+<span class="arrow">View Work →</span>
+</a>
 </div>
 </div>
 </section>
@@ -245,27 +294,27 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <h2 class="section-title">Selected Work</h2>
 <p class="section-subtitle">A glimpse into projects I've crafted with care</p>
 <div class="portfolio-grid">
-<a href="work.html" class="portfolio-item">
+<a href="work.html?cat=social-media" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=450&fit=crop" alt="Social Media">
 <div class="portfolio-overlay"><h3>Social Media</h3><p>View Projects →</p></div>
 </a>
-<a href="work.html" class="portfolio-item">
+<a href="work.html?cat=branding" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=450&fit=crop" alt="Branding">
 <div class="portfolio-overlay"><h3>Branding</h3><p>View Projects →</p></div>
 </a>
-<a href="work.html" class="portfolio-item">
+<a href="work.html?cat=print" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=450&fit=crop" alt="Print Design">
 <div class="portfolio-overlay"><h3>Print Design</h3><p>View Projects →</p></div>
 </a>
-<a href="work.html" class="portfolio-item">
+<a href="work.html?cat=packaging" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=450&fit=crop" alt="Packaging">
 <div class="portfolio-overlay"><h3>Packaging</h3><p>View Projects →</p></div>
 </a>
-<a href="work.html" class="portfolio-item">
+<a href="work.html?cat=presentations" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=450&fit=crop" alt="Presentations">
 <div class="portfolio-overlay"><h3>Presentations</h3><p>View Projects →</p></div>
 </a>
-<a href="work.html" class="portfolio-item">
+<a href="work.html?cat=publications" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=600&h=450&fit=crop" alt="Publications">
 <div class="portfolio-overlay"><h3>Publications</h3><p>View Projects →</p></div>
 </a>
@@ -322,57 +371,33 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 
 <h3 style="margin-top:60px;margin-bottom:8px">Tools I Work With</h3>
 <div class="software-grid">
-<div class="software-item"><div class="icon">Ps</div><h4>Photoshop</h4><p>CC 2020-2025</p></div>
-<div class="software-item"><div class="icon">Ai</div><h4>Illustrator</h4><p>CC 2020-2025</p></div>
-<div class="software-item"><div class="icon">Id</div><h4>InDesign</h4><p>CC 2020-2025</p></div>
-<div class="software-item"><div class="icon">Cd</div><h4>CorelDRAW</h4><p>X3-X19</p></div>
-<div class="software-item"><div class="icon">W</div><h4>MS Word</h4><p>2003-2021</p></div>
-<div class="software-item"><div class="icon">P</div><h4>MS PowerPoint</h4><p>2003-2021</p></div>
-<div class="software-item"><div class="icon">X</div><h4>MS Excel</h4><p>2003-2021</p></div>
+<div class="software-item">
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop"></div>
+<h4>Photoshop</h4><p>CC 2020-2025</p>
 </div>
+<div class="software-item">
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Illustrator"></div>
+<h4>Illustrator</h4><p>CC 2020-2025</p>
 </div>
-</section>
-
-<section id="contact" class="contact">
-<div class="container">
-<h2 class="section-title">Let's Work Together</h2>
-<p class="section-subtitle">Have a project in mind? I'd love to hear about it.</p>
-<div class="contact-grid">
-<div class="contact-info">
-<div class="contact-item">
-<div class="icon">📧</div>
-<div><p>Email</p><a href="mailto:ratan.pote@gmail.com">ratan.pote@gmail.com</a></div>
+<div class="software-item">
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Adobe_InDesign_CC_icon.svg" alt="InDesign"></div>
+<h4>InDesign</h4><p>CC 2020-2025</p>
 </div>
-<div class="contact-item">
-<div class="icon">📱</div>
-<div><p>Phone</p><a href="tel:+918454030616">+91 84540 30616</a></div>
+<div class="software-item">
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/CorelDraw_logo.svg" alt="CorelDRAW"></div>
+<h4>CorelDRAW</h4><p>X3-X19</p>
 </div>
-<div class="contact-item">
-<div class="icon">📍</div>
-<div><p>Location</p><p>Mumbai, Maharashtra, India</p></div>
+<div class="software-item">
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere Pro"></div>
+<h4>Premiere Pro</h4><p>CC 2020-2025</p>
 </div>
+<div class="software-item">
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Adobe_Acrobat_DC_icon_%282020%29.svg" alt="Acrobat DC"></div>
+<h4>Acrobat DC</h4><p>2020-2025</p>
 </div>
-<form class="contact-form" onsubmit="event.preventDefault();alert('Message sent! (Demo)')">
-<input type="text" placeholder="Your Name" required>
-<input type="email" placeholder="Your Email" required>
-<textarea placeholder="Tell me about your project..."></textarea>
-<button type="submit" class="btn">Send Message</button>
-</form>
+<div class="software-item">
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg" alt="Word"></div>
+<h4>MS Word</h4><p>2003-2021</p>
 </div>
-</div>
-</section>
-
-<footer>
-<div class="container">
-<p>© 2025 Ratan S. Pote. All rights reserved.</p>
-<div class="social-links">
-<a href="#" title="LinkedIn">in</a>
-<a href="#" title="Behance">Be</a>
-<a href="#" title="Dribbble">Dr</a>
-</div>
-</div>
-</footer>
-
-</body>
-
-</html>
+<div class="software-item">
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg" alt="PowerPoint"></div>
