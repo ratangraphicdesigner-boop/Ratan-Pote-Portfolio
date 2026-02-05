@@ -12,25 +12,19 @@ body{font-family:'Inter',sans-serif;color:var(--primary);line-height:1.6;backgro
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 a{color:inherit;text-decoration:none}
 
-/* Nav */
 nav{padding:20px 0;position:fixed;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid #eee}
 nav .container{display:flex;justify-content:space-between;align-items:center}
 .logo{font-weight:700;font-size:1.1rem}
 .nav-links{display:flex;gap:32px}
 .nav-links a{font-size:0.9rem;color:var(--gray);transition:color 0.3s}
 .nav-links a:hover{color:var(--primary)}
-.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:101}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:200}
 .menu-btn span{display:block;width:24px;height:2px;background:var(--primary);margin:5px 0;transition:0.3s}
-.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.menu-btn.active span:nth-child(2){opacity:0}
-.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-/* Mobile Menu */
-.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--white);flex-direction:column;justify-content:center;align-items:center;gap:32px;z-index:99}
-.mobile-menu.active{display:flex}
+.mobile-menu{position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--white);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px;z-index:150;transform:translateX(-100%);transition:transform 0.3s ease}
+.mobile-menu.open{transform:translateX(0)}
 .mobile-menu a{font-size:1.5rem;color:var(--primary);font-weight:600}
 
-/* Hero */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:80px}
 .hero-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .hero-text h1{font-size:3rem;font-weight:700;line-height:1.1;margin-bottom:16px}
@@ -45,32 +39,27 @@ nav .container{display:flex;justify-content:space-between;align-items:center}
 .hero-image img{width:100%;max-width:400px;border-radius:16px;box-shadow:0 30px 60px rgba(0,0,0,0.12)}
 .hero-image::before{content:'';position:absolute;width:100%;height:100%;background:var(--accent);border-radius:16px;top:20px;left:20px;z-index:-1}
 
-/* Stats */
 .stats{display:flex;gap:40px;margin-top:48px}
 .stat h3{font-size:2rem;font-weight:700}
 .stat p{color:var(--gray);font-size:0.85rem}
 
-/* Section */
 section{padding:100px 0}
 .section-title{font-size:2rem;font-weight:700;margin-bottom:16px}
 .section-subtitle{color:var(--gray);max-width:500px;margin-bottom:48px}
 
-/* About */
 .about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:start}
 .about-slider{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5}
-.about-slider img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s ease-in-out}
+.about-slider img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s}
 .about-slider img.active{opacity:1}
 .slider-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
 .slider-dots span{width:8px;height:8px;border-radius:50%;background:#ddd;cursor:pointer;transition:background 0.3s}
 .slider-dots span.active{background:var(--accent)}
 
-/* Skills with icons */
 .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
-.skill-tag{padding:12px 16px;background:var(--light);border-radius:8px;font-size:0.85rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--primary);transition:background 0.3s,transform 0.3s;cursor:pointer}
-.skill-tag:hover{background:#e8e8e8;transform:translateY(-2px)}
+.skill-tag{padding:12px 16px;background:var(--light);border-radius:8px;font-size:0.85rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--primary);transition:all 0.3s;cursor:pointer}
+.skill-tag:hover{background:#e0e0e0;transform:translateY(-2px)}
 .skill-tag svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.5}
 
-/* Services */
 .services{background:var(--light)}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .service-card{background:var(--white);padding:32px;border-radius:12px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
@@ -78,9 +67,8 @@ section{padding:100px 0}
 .service-icon{width:48px;height:48px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.5rem}
 .service-card h3{font-size:1.1rem;margin-bottom:12px}
 .service-card p{color:var(--gray);font-size:0.9rem}
-.service-card .arrow{margin-top:16px;color:var(--accent);font-size:0.85rem;display:flex;align-items:center;gap:6px}
+.service-card .arrow{margin-top:16px;color:var(--accent);font-size:0.85rem}
 
-/* Portfolio */
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .portfolio-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;display:block}
 .portfolio-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
@@ -90,7 +78,6 @@ section{padding:100px 0}
 .portfolio-overlay h3{color:var(--white);font-size:1.1rem;margin-bottom:4px}
 .portfolio-overlay p{color:rgba(255,255,255,0.7);font-size:0.85rem}
 
-/* Experience */
 .timeline{max-width:700px}
 .timeline-item{padding:24px 0;border-bottom:1px solid #eee;display:grid;grid-template-columns:180px 1fr;gap:24px}
 .timeline-item:last-child{border:none}
@@ -99,22 +86,20 @@ section{padding:100px 0}
 .timeline-content .company{color:var(--accent);font-weight:500;margin-bottom:8px}
 .timeline-content p{color:var(--gray);font-size:0.9rem}
 
-/* Software */
 .software-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
 .software-item{text-align:center;padding:24px 16px;background:var(--light);border-radius:12px}
-.software-item .icon{width:48px;height:48px;margin:0 auto 12px;border-radius:8px;overflow:hidden}
+.software-item .icon{width:48px;height:48px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center}
 .software-item .icon img{width:100%;height:100%;object-fit:contain}
 .software-item h4{font-size:0.85rem;margin-bottom:4px}
 .software-item p{font-size:0.75rem;color:var(--gray)}
 
-/* Contact */
 .contact{background:var(--primary);color:var(--white)}
 .contact .section-title{color:var(--white)}
 .contact .section-subtitle{color:rgba(255,255,255,0.6)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
 .contact-info{display:flex;flex-direction:column;gap:24px}
 .contact-item{display:flex;align-items:center;gap:16px}
-.contact-item .icon{width:48px;height:48px;background:rgba(255,255,255,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.contact-item .icn{width:48px;height:48px;background:rgba(255,255,255,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
 .contact-item p{color:rgba(255,255,255,0.8);font-size:0.95rem}
 .contact-item a{color:var(--white)}
 .contact-form{display:flex;flex-direction:column;gap:16px}
@@ -123,7 +108,6 @@ section{padding:100px 0}
 .contact-form textarea{min-height:120px;resize:vertical}
 .contact-form .btn{background:var(--accent);color:var(--white);border:none;cursor:pointer}
 
-/* Footer */
 footer{background:var(--primary);color:rgba(255,255,255,0.6);padding:24px 0;border-top:1px solid rgba(255,255,255,0.1)}
 footer .container{display:flex;justify-content:space-between;align-items:center}
 footer p{font-size:0.85rem}
@@ -131,7 +115,6 @@ footer p{font-size:0.85rem}
 .social-links a{width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;transition:background 0.3s}
 .social-links a:hover{background:var(--accent)}
 
-/* Mobile */
 @media(max-width:900px){
 .hero-content{grid-template-columns:1fr;text-align:center}
 .hero-text p{margin:0 auto 32px}
@@ -152,17 +135,15 @@ footer p{font-size:0.85rem}
 .portfolio-grid{grid-template-columns:1fr}
 .stats{flex-direction:column;gap:24px}
 footer .container{flex-direction:column;gap:16px;text-align:center}
-.software-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
 <body>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
 <a href="#about" onclick="closeMenu()">About</a>
 <a href="#services" onclick="closeMenu()">Services</a>
-<a href="work.html" onclick="closeMenu()">Work</a>
+<a href="work.html">Work</a>
 <a href="#experience" onclick="closeMenu()">Experience</a>
 <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
@@ -177,7 +158,7 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <a href="#experience">Experience</a>
 <a href="#contact">Contact</a>
 </div>
-<button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
 </div>
 </nav>
 
@@ -216,12 +197,7 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=500&h=600&fit=crop" alt="Publications">
 </div>
 <div class="slider-dots" id="sliderDots">
-<span class="active" onclick="goToSlide(0)"></span>
-<span onclick="goToSlide(1)"></span>
-<span onclick="goToSlide(2)"></span>
-<span onclick="goToSlide(3)"></span>
-<span onclick="goToSlide(4)"></span>
-<span onclick="goToSlide(5)"></span>
+<span class="active"></span><span></span><span></span><span></span><span></span><span></span>
 </div>
 </div>
 <div class="about-content">
@@ -385,7 +361,7 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <h4>InDesign</h4><p>CC 2020-2025</p>
 </div>
 <div class="software-item">
-<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/CorelDraw_logo.svg" alt="CorelDRAW"></div>
+<div class="icon"><img src="https://cdn.worldvectorlogo.com/logos/coreldraw-2020.svg" alt="CorelDRAW"></div>
 <h4>CorelDRAW</h4><p>X3-X19</p>
 </div>
 <div class="software-item">
@@ -393,12 +369,96 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <h4>Premiere Pro</h4><p>CC 2020-2025</p>
 </div>
 <div class="software-item">
-<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Adobe_Acrobat_DC_icon_%282020%29.svg" alt="Acrobat DC"></div>
+<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Acrobat_DC.svg" alt="Acrobat DC"></div>
 <h4>Acrobat DC</h4><p>2020-2025</p>
 </div>
 <div class="software-item">
-<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg" alt="Word"></div>
+<div class="icon"><img src="https://cdn.worldvectorlogo.com/logos/microsoft-word-2013.svg" alt="Word"></div>
 <h4>MS Word</h4><p>2003-2021</p>
 </div>
 <div class="software-item">
-<div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg" alt="PowerPoint"></div>
+<div class="icon"><img src="https://cdn.worldvectorlogo.com/logos/microsoft-powerpoint-2013.svg" alt="PowerPoint"></div>
+<h4>MS PowerPoint</h4><p>2003-2021</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="container">
+<h2 class="section-title">Let's Work Together</h2>
+<p class="section-subtitle">Have a project in mind? I'd love to hear about it.</p>
+<div class="contact-grid">
+<div class="contact-info">
+<div class="contact-item">
+<div class="icn">📧</div>
+<div><p>Email</p><a href="mailto:ratan.pote@gmail.com">ratan.pote@gmail.com</a></div>
+</div>
+<div class="contact-item">
+<div class="icn">📱</div>
+<div><p>Phone</p><a href="tel:+918454030616">+91 84540 30616</a></div>
+</div>
+<div class="contact-item">
+<div class="icn">📍</div>
+<div><p>Location</p><p>Mumbai, Maharashtra, India</p></div>
+</div>
+</div>
+<form class="contact-form" onsubmit="event.preventDefault();alert('Message sent!')">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea placeholder="Tell me about your project..."></textarea>
+<button type="submit" class="btn">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>© 2025 Ratan S. Pote. All rights reserved.</p>
+<div class="social-links">
+<a href="#" title="LinkedIn">in</a>
+<a href="#" title="Behance">Be</a>
+<a href="#" title="Dribbble">Dr</a>
+</div>
+</div>
+</footer>
+
+<script>
+var menuBtn = document.getElementById('menuBtn');
+var mobileMenu = document.getElementById('mobileMenu');
+
+menuBtn.addEventListener('click', function() {
+    mobileMenu.classList.toggle('open');
+});
+
+function closeMenu() {
+    mobileMenu.classList.remove('open');
+}
+
+var currentSlide = 0;
+var slides = document.querySelectorAll('#aboutSlider img');
+var dots = document.querySelectorAll('#sliderDots span');
+
+function showSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    if (currentSlide >= slides.length) currentSlide = 0;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+setInterval(function() {
+    showSlide(currentSlide + 1);
+}, 3000);
+
+dots.forEach(function(dot, index) {
+    dot.addEventListener('click', function() {
+        showSlide(index);
+    });
+});
+</script>
+
+</body>
+</html>
