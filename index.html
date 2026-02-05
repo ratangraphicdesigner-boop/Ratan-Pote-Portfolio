@@ -66,7 +66,8 @@ section{padding:100px 0}
 
 /* Skills with icons */
 .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
-.skill-tag{padding:12px 16px;background:var(--light);border-radius:8px;font-size:0.85rem;display:flex;align-items:center;gap:10px}
+.skill-tag{padding:12px 16px;background:var(--light);border-radius:8px;font-size:0.85rem;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--primary);transition:background 0.3s,transform 0.3s;cursor:pointer}
+.skill-tag:hover{background:#e8e8e8;transform:translateY(-2px)}
 .skill-tag svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.5}
 
 /* Services */
@@ -230,14 +231,14 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <br>
 <p>I specialize in brand identity, marketing collateral, packaging design, and digital content creation. Whether it's a startup looking for their first logo or an established company needing a complete marketing overhaul, I bring the same level of creativity and dedication to every project.</p>
 <div class="skills-grid">
-<span class="skill-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Brand Identity</span>
-<span class="skill-tag"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>Print Design</span>
-<span class="skill-tag"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Social Media</span>
-<span class="skill-tag"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Packaging</span>
-<span class="skill-tag"><svg viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>Typography</span>
-<span class="skill-tag"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Marketing Materials</span>
-<span class="skill-tag"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Infographics</span>
-<span class="skill-tag"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>Presentations</span>
+<a href="work.html?cat=branding" class="skill-tag"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Brand Identity</a>
+<a href="work.html?cat=print" class="skill-tag"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>Print Design</a>
+<a href="work.html?cat=social-media" class="skill-tag"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Social Media</a>
+<a href="work.html?cat=packaging" class="skill-tag"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Packaging</a>
+<a href="work.html?cat=branding" class="skill-tag"><svg viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>Typography</a>
+<a href="work.html?cat=print" class="skill-tag"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Marketing Materials</a>
+<a href="work.html?cat=publications" class="skill-tag"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Infographics</a>
+<a href="work.html?cat=presentations" class="skill-tag"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>Presentations</a>
 </div>
 </div>
 </div>
