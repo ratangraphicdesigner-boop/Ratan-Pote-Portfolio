@@ -270,10 +270,10 @@ footer .container{flex-direction:column;gap:12px;text-align:center}
 <div class="contact-item"><div class="icn">📱</div><div><p>Phone</p><a href="tel:+918454030616">+91 84540 30616</a></div></div>
 <div class="contact-item"><div class="icn">📍</div><div><p>Location</p><p>Mumbai, Maharashtra, India</p></div></div>
 </div>
-<form class="contact-form" onsubmit="event.preventDefault();alert('Message sent!')">
-<input type="text" placeholder="Your Name" required>
-<input type="email" placeholder="Your Email" required>
-<textarea placeholder="Tell me about your project..."></textarea>
+<form class="contact-form" action="https://formspree.io/f/mgoleovd" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" placeholder="Tell me about your project..."></textarea>
 <button type="submit" class="btn">Send Message</button>
 </form>
 </div>
@@ -296,4 +296,5 @@ dots.forEach(function(dot,index){dot.addEventListener('click',function(){showSli
 </script>
 </body>
 </html>
+
 
