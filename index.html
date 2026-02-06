@@ -61,16 +61,16 @@ section{padding:100px 0}
 .skill-tag svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.5}
 
 .services{background:var(--light)}
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.service-card{background:var(--white);padding:28px;border-radius:12px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);padding:32px;border-radius:12px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
 .service-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.08)}
-.service-icon{width:48px;height:48px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.5rem}
-.service-card h3{font-size:1rem;margin-bottom:10px}
-.service-card p{color:var(--gray);font-size:0.85rem;line-height:1.5}
-.service-card .arrow{margin-top:14px;color:var(--accent);font-size:0.85rem}
+.service-icon{width:48px;height:48px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.5rem}
+.service-card h3{font-size:1.1rem;margin-bottom:12px}
+.service-card p{color:var(--gray);font-size:0.9rem}
+.service-card .arrow{margin-top:16px;color:var(--accent);font-size:0.85rem}
 
-.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.portfolio-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1;cursor:pointer;display:block}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.portfolio-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;display:block}
 .portfolio-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
 .portfolio-item:hover img{transform:scale(1.1)}
 .portfolio-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;opacity:0;transition:opacity 0.3s}
@@ -122,7 +122,7 @@ footer p{font-size:0.85rem}
 .hero-image::before{display:none}
 .stats{justify-content:center}
 .about-grid{grid-template-columns:1fr}
-.services-grid{grid-template-columns:repeat(2,1fr)}
+.services-grid{grid-template-columns:1fr}
 .portfolio-grid{grid-template-columns:repeat(2,1fr)}
 .timeline-item{grid-template-columns:1fr}
 .software-grid{grid-template-columns:repeat(2,1fr)}
@@ -132,7 +132,6 @@ footer p{font-size:0.85rem}
 .nav-links{display:none}
 .menu-btn{display:block}
 .hero-text h1{font-size:2rem}
-.services-grid{grid-template-columns:1fr}
 .portfolio-grid{grid-template-columns:1fr}
 .stats{flex-direction:column;gap:24px}
 footer .container{flex-direction:column;gap:16px;text-align:center}
@@ -240,53 +239,41 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="container">
 <h2 class="section-title">What I Do</h2>
 <p class="section-subtitle">Comprehensive design solutions tailored to your needs</p>
-<div class="services-grid" style="grid-template-columns:repeat(4,1fr);">
+<div class="services-grid">
 <a href="work.html?cat=branding" class="service-card">
 <div class="service-icon">🎨</div>
 <h3>Brand Identity</h3>
-<p>Logos, color systems, and visual guidelines that capture your brand's essence.</p>
+<p>Logos, color systems, and visual guidelines that capture your brand's essence and make a lasting impression.</p>
 <span class="arrow">View Work →</span>
 </a>
 <a href="work.html?cat=print" class="service-card">
 <div class="service-icon">📄</div>
 <h3>Print Design</h3>
-<p>Brochures, flyers, catalogs, and marketing materials designed for impact.</p>
+<p>Brochures, flyers, catalogs, and marketing materials designed for impact and professional quality.</p>
 <span class="arrow">View Work →</span>
 </a>
 <a href="work.html?cat=social-media" class="service-card">
 <div class="service-icon">📱</div>
 <h3>Digital & Social Media</h3>
-<p>Eye-catching graphics for social platforms that boost engagement.</p>
+<p>Eye-catching graphics optimized for social platforms that boost engagement and brand visibility.</p>
 <span class="arrow">View Work →</span>
 </a>
 <a href="work.html?cat=packaging" class="service-card">
 <div class="service-icon">📦</div>
 <h3>Packaging Design</h3>
-<p>Creative packaging that stands out on shelves and communicates value.</p>
+<p>Creative packaging solutions that stand out on shelves and communicate your product's value.</p>
 <span class="arrow">View Work →</span>
 </a>
 <a href="work.html?cat=presentations" class="service-card">
 <div class="service-icon">📊</div>
 <h3>Presentations</h3>
-<p>Professional pitch decks and corporate presentations that persuade.</p>
-<span class="arrow">View Work →</span>
-</a>
-<a href="work.html?cat=infographics" class="service-card">
-<div class="service-icon">📈</div>
-<h3>Infographics</h3>
-<p>Data visualization, charts, and diagrams that simplify complex information.</p>
+<p>Professional corporate presentations and pitch decks that communicate ideas clearly and persuasively.</p>
 <span class="arrow">View Work →</span>
 </a>
 <a href="work.html?cat=publications" class="service-card">
-<div class="service-icon">📑</div>
-<h3>Publications & Reports</h3>
-<p>Annual reports, ESG reports, magazines, books, and multi-page layouts.</p>
-<span class="arrow">View Work →</span>
-</a>
-<a href="work.html?cat=illustration" class="service-card">
 <div class="service-icon">✏️</div>
-<h3>Illustration</h3>
-<p>Custom illustrations, icons, and graphics for unique visual storytelling.</p>
+<h3>Illustration & Infographics</h3>
+<p>Custom illustrations and data visualizations that simplify complex information beautifully.</p>
 <span class="arrow">View Work →</span>
 </a>
 </div>
@@ -297,7 +284,11 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <div class="container">
 <h2 class="section-title">Selected Work</h2>
 <p class="section-subtitle">A glimpse into projects I've crafted with care</p>
-<div class="portfolio-grid" style="grid-template-columns:repeat(4,1fr);">
+<div class="portfolio-grid">
+<a href="work.html?cat=social-media" class="portfolio-item">
+<img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=450&fit=crop" alt="Social Media">
+<div class="portfolio-overlay"><h3>Social Media</h3><p>View Projects →</p></div>
+</a>
 <a href="work.html?cat=branding" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=450&fit=crop" alt="Branding">
 <div class="portfolio-overlay"><h3>Branding</h3><p>View Projects →</p></div>
@@ -305,10 +296,6 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <a href="work.html?cat=print" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=450&fit=crop" alt="Print Design">
 <div class="portfolio-overlay"><h3>Print Design</h3><p>View Projects →</p></div>
-</a>
-<a href="work.html?cat=social-media" class="portfolio-item">
-<img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=450&fit=crop" alt="Social Media">
-<div class="portfolio-overlay"><h3>Social Media</h3><p>View Projects →</p></div>
 </a>
 <a href="work.html?cat=packaging" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=450&fit=crop" alt="Packaging">
@@ -318,17 +305,9 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=450&fit=crop" alt="Presentations">
 <div class="portfolio-overlay"><h3>Presentations</h3><p>View Projects →</p></div>
 </a>
-<a href="work.html?cat=infographics" class="portfolio-item">
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=450&fit=crop" alt="Infographics">
-<div class="portfolio-overlay"><h3>Infographics</h3><p>View Projects →</p></div>
-</a>
 <a href="work.html?cat=publications" class="portfolio-item">
 <img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=600&h=450&fit=crop" alt="Publications">
-<div class="portfolio-overlay"><h3>Publications & Reports</h3><p>View Projects →</p></div>
-</a>
-<a href="work.html?cat=illustration" class="portfolio-item">
-<img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=450&fit=crop" alt="Illustration">
-<div class="portfolio-overlay"><h3>Illustration</h3><p>View Projects →</p></div>
+<div class="portfolio-overlay"><h3>Publications</h3><p>View Projects →</p></div>
 </a>
 </div>
 </div>
