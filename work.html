@@ -19,7 +19,7 @@ nav .container{display:flex;justify-content:space-between;align-items:center}
 .nav-links a{font-size:0.9rem;color:var(--gray);transition:color 0.3s}
 .nav-links a:hover,.nav-links a.active{color:var(--primary);font-weight:600}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:200}
-.menu-btn span{display:block;width:24px;height:2px;background:var(--primary);margin:5px 0;transition:0.3s}
+.menu-btn span{display:block;width:24px;height:2px;background:var(--primary);margin:5px 0}
 
 .mobile-menu{position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--white);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px;z-index:150;transform:translateX(-100%);transition:transform 0.3s ease}
 .mobile-menu.open{transform:translateX(0)}
@@ -48,12 +48,34 @@ nav .container{display:flex;justify-content:space-between;align-items:center}
 .work-item:hover .work-overlay{opacity:1}
 .work-overlay h4{color:var(--white);font-size:0.95rem;margin-bottom:4px}
 .work-overlay span{color:rgba(255,255,255,0.7);font-size:0.8rem}
+.work-item .zoom-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:50px;height:50px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.3s;font-size:1.2rem}
+.work-item:hover .zoom-icon{transform:translate(-50%,-50%) scale(1)}
 
 .work-cta{padding:60px 0;background:var(--light);text-align:center}
 .work-cta h2{margin-bottom:8px}
 .work-cta p{color:var(--gray);margin-bottom:24px}
 .btn{display:inline-block;padding:14px 32px;background:var(--primary);color:var(--white);border-radius:8px;font-weight:500;transition:transform 0.3s,box-shadow 0.3s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.15)}
+
+/* Lightbox with Zoom */
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:200;display:none;flex-direction:column;justify-content:center;align-items:center}
+.lightbox.active{display:flex}
+.lightbox-header{position:absolute;top:0;left:0;right:0;padding:20px 30px;display:flex;justify-content:space-between;align-items:center;z-index:10}
+.lightbox-info h4{color:#fff;font-size:1.1rem;margin-bottom:2px}
+.lightbox-info span{color:rgba(255,255,255,0.6);font-size:0.85rem}
+.lightbox-controls{display:flex;gap:15px}
+.lightbox-btn{background:rgba(255,255,255,0.1);border:none;color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.2rem;transition:background 0.3s;display:flex;align-items:center;justify-content:center}
+.lightbox-btn:hover{background:rgba(255,255,255,0.2)}
+.lightbox-img-container{width:100%;height:100%;display:flex;justify-content:center;align-items:center;overflow:auto;padding:80px 20px 20px}
+.lightbox-img-container img{max-width:100%;max-height:100%;object-fit:contain;transition:transform 0.3s;cursor:zoom-in}
+.lightbox-img-container img.zoomed{max-width:none;max-height:none;cursor:grab}
+.lightbox-img-container img.zoomed.dragging{cursor:grabbing}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;color:#fff;width:50px;height:50px;border-radius:50%;cursor:pointer;font-size:1.5rem;transition:background 0.3s;display:flex;align-items:center;justify-content:center}
+.lightbox-nav:hover{background:rgba(255,255,255,0.2)}
+.lightbox-nav.prev{left:20px}
+.lightbox-nav.next{right:20px}
+.lightbox-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:0.9rem}
+.zoom-hint{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.5);font-size:0.8rem}
 
 footer{background:var(--primary);color:rgba(255,255,255,0.6);padding:24px 0;border-top:1px solid rgba(255,255,255,0.1)}
 footer .container{display:flex;justify-content:space-between;align-items:center}
@@ -62,18 +84,12 @@ footer p{font-size:0.85rem}
 .social-links a{width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;transition:background 0.3s}
 .social-links a:hover{background:var(--accent)}
 
-/* Lightbox */
-.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:200;display:none;justify-content:center;align-items:center;padding:20px}
-.lightbox.active{display:flex}
-.lightbox img{max-width:90%;max-height:85%;border-radius:8px;object-fit:contain}
-.lightbox-close{position:absolute;top:20px;right:30px;font-size:2rem;color:#fff;cursor:pointer;background:none;border:none}
-.lightbox-info{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);text-align:center;color:#fff}
-.lightbox-info h4{font-size:1.2rem;margin-bottom:4px}
-.lightbox-info span{font-size:0.9rem;color:rgba(255,255,255,0.7)}
-
 @media(max-width:900px){
 .work-grid{grid-template-columns:repeat(3,1fr)}
 .work-stats{gap:32px}
+.lightbox-nav{width:40px;height:40px;font-size:1.2rem}
+.lightbox-nav.prev{left:10px}
+.lightbox-nav.next{right:10px}
 }
 @media(max-width:600px){
 .nav-links{display:none}
@@ -84,6 +100,8 @@ footer p{font-size:0.85rem}
 .work-stats{gap:24px;flex-wrap:wrap}
 .work-stat h3{font-size:1.4rem}
 footer .container{flex-direction:column;gap:16px;text-align:center}
+.lightbox-header{padding:15px;flex-direction:column;gap:10px}
+.lightbox-info{text-align:center}
 }
 </style>
 </head>
@@ -91,11 +109,10 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 
 <div class="mobile-menu" id="mobileMenu">
 <a href="index.html">Home</a>
-<a href="index.html#about" onclick="closeMenu()">About</a>
-<a href="index.html#services" onclick="closeMenu()">Services</a>
+<a href="index.html#about">About</a>
+<a href="index.html#services">Services</a>
 <a href="work.html" class="active">Work</a>
-<a href="index.html#experience" onclick="closeMenu()">Experience</a>
-<a href="index.html#contact" onclick="closeMenu()">Contact</a>
+<a href="index.html#contact">Contact</a>
 </div>
 
 <nav>
@@ -127,121 +144,200 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 <section class="work-categories">
 <div class="container">
 <div class="category-tabs">
-<button class="cat-tab active" data-cat="all">All Work <span class="count">20</span></button>
-<button class="cat-tab" data-cat="branding">Branding <span class="count">4</span></button>
-<button class="cat-tab" data-cat="print">Print Design <span class="count">4</span></button>
-<button class="cat-tab" data-cat="social-media">Social Media <span class="count">4</span></button>
-<button class="cat-tab" data-cat="packaging">Packaging <span class="count">3</span></button>
-<button class="cat-tab" data-cat="presentations">Presentations <span class="count">3</span></button>
-<button class="cat-tab" data-cat="publications">Publications & Reports <span class="count">2</span></button>
+<button class="cat-tab active" data-cat="all">All Work <span class="count">30</span></button>
+<button class="cat-tab" data-cat="branding">Branding <span class="count">5</span></button>
+<button class="cat-tab" data-cat="print">Print Design <span class="count">5</span></button>
+<button class="cat-tab" data-cat="social-media">Social Media <span class="count">5</span></button>
+<button class="cat-tab" data-cat="packaging">Packaging <span class="count">5</span></button>
+<button class="cat-tab" data-cat="presentations">Presentations <span class="count">5</span></button>
+<button class="cat-tab" data-cat="publications">Publications & Reports <span class="count">5</span></button>
 </div>
 
 <div class="work-grid" id="workGrid">
-<!-- Social Media -->
-<div class="work-item" data-category="social-media">
-<img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&h=500&fit=crop" alt="Social Media">
-<div class="work-overlay"><h4>Instagram Campaign</h4><span>Social Media</span></div>
-</div>
-<div class="work-item" data-category="social-media">
-<img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500&h=500&fit=crop" alt="Social Media">
-<div class="work-overlay"><h4>Facebook Ads</h4><span>Social Media</span></div>
-</div>
-<div class="work-item" data-category="social-media">
-<img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=500&h=500&fit=crop" alt="Social Media">
-<div class="work-overlay"><h4>LinkedIn Posts</h4><span>Social Media</span></div>
-</div>
-<div class="work-item" data-category="social-media">
-<img src="https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=500&fit=crop" alt="Social Media">
-<div class="work-overlay"><h4>Story Templates</h4><span>Social Media</span></div>
-</div>
-<div class="work-item" data-category="social-media">
-<img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=500&h=500&fit=crop" alt="Social Media">
-<div class="work-overlay"><h4>Social Media Kit</h4><span>Social Media</span></div>
-</div>
-
-<!-- Branding -->
+<!-- Branding - 5 images -->
 <div class="work-item" data-category="branding">
-<img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=500&h=500&fit=crop" alt="Branding">
+<img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=600&fit=crop" alt="Branding">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Tech Startup Logo</h4><span>Branding</span></div>
 </div>
 <div class="work-item" data-category="branding">
-<img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=500&h=500&fit=crop" alt="Branding">
+<img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=600&h=600&fit=crop" alt="Branding">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Restaurant Identity</h4><span>Branding</span></div>
 </div>
 <div class="work-item" data-category="branding">
-<img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=500&h=500&fit=crop" alt="Branding">
+<img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=600&fit=crop" alt="Branding">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Brand Guidelines</h4><span>Branding</span></div>
 </div>
 <div class="work-item" data-category="branding">
-<img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&h=500&fit=crop" alt="Branding">
+<img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&h=600&fit=crop" alt="Branding">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Corporate Identity</h4><span>Branding</span></div>
 </div>
+<div class="work-item" data-category="branding">
+<img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=600&fit=crop" alt="Branding">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Logo Design</h4><span>Branding</span></div>
+</div>
 
-<!-- Print Design -->
+<!-- Print Design - 5 images -->
 <div class="work-item" data-category="print">
-<img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=500&fit=crop" alt="Print">
+<img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=600&fit=crop" alt="Print">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Product Brochure</h4><span>Print Design</span></div>
 </div>
 <div class="work-item" data-category="print">
-<img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&h=500&fit=crop" alt="Print">
+<img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=600&h=600&fit=crop" alt="Print">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Event Flyer</h4><span>Print Design</span></div>
 </div>
 <div class="work-item" data-category="print">
-<img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&h=500&fit=crop" alt="Print">
+<img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop" alt="Print">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Business Cards</h4><span>Print Design</span></div>
 </div>
 <div class="work-item" data-category="print">
-<img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=500&h=500&fit=crop" alt="Print">
+<img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&h=600&fit=crop" alt="Print">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Magazine Layout</h4><span>Print Design</span></div>
 </div>
+<div class="work-item" data-category="print">
+<img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=600&h=600&fit=crop" alt="Print">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Catalog Design</h4><span>Print Design</span></div>
+</div>
 
-<!-- Packaging -->
+<!-- Social Media - 5 images -->
+<div class="work-item" data-category="social-media">
+<img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=600&fit=crop" alt="Social Media">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Instagram Campaign</h4><span>Social Media</span></div>
+</div>
+<div class="work-item" data-category="social-media">
+<img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=600&fit=crop" alt="Social Media">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Facebook Ads</h4><span>Social Media</span></div>
+</div>
+<div class="work-item" data-category="social-media">
+<img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=600&fit=crop" alt="Social Media">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>LinkedIn Posts</h4><span>Social Media</span></div>
+</div>
+<div class="work-item" data-category="social-media">
+<img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&h=600&fit=crop" alt="Social Media">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Social Media Kit</h4><span>Social Media</span></div>
+</div>
+<div class="work-item" data-category="social-media">
+<img src="https://images.unsplash.com/photo-1557838923-2985c318be48?w=600&h=600&fit=crop" alt="Social Media">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Story Templates</h4><span>Social Media</span></div>
+</div>
+
+<!-- Packaging - 5 images -->
 <div class="work-item" data-category="packaging">
-<img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=500&h=500&fit=crop" alt="Packaging">
+<img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=600&fit=crop" alt="Packaging">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Cosmetic Packaging</h4><span>Packaging</span></div>
 </div>
 <div class="work-item" data-category="packaging">
-<img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&h=500&fit=crop" alt="Packaging">
+<img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&h=600&fit=crop" alt="Packaging">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Food Packaging</h4><span>Packaging</span></div>
 </div>
 <div class="work-item" data-category="packaging">
-<img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?w=500&h=500&fit=crop" alt="Packaging">
+<img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?w=600&h=600&fit=crop" alt="Packaging">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Product Box Design</h4><span>Packaging</span></div>
 </div>
+<div class="work-item" data-category="packaging">
+<img src="https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?w=600&h=600&fit=crop" alt="Packaging">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Bottle Label</h4><span>Packaging</span></div>
+</div>
+<div class="work-item" data-category="packaging">
+<img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600&h=600&fit=crop" alt="Packaging">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Gift Box Design</h4><span>Packaging</span></div>
+</div>
 
-<!-- Presentations -->
+<!-- Presentations - 5 images -->
 <div class="work-item" data-category="presentations">
-<img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=500&fit=crop" alt="Presentation">
+<img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=600&fit=crop" alt="Presentation">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Investor Pitch Deck</h4><span>Presentations</span></div>
 </div>
 <div class="work-item" data-category="presentations">
-<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=500&fit=crop" alt="Presentation">
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=600&fit=crop" alt="Presentation">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Corporate Deck</h4><span>Presentations</span></div>
 </div>
+<div class="work-item" data-category="presentations">
+<img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=600&fit=crop" alt="Presentation">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Sales Presentation</h4><span>Presentations</span></div>
+</div>
+<div class="work-item" data-category="presentations">
+<img src="https://images.unsplash.com/photo-1531498860502-7c67cf02f657?w=600&h=600&fit=crop" alt="Presentation">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Training Slides</h4><span>Presentations</span></div>
+</div>
+<div class="work-item" data-category="presentations">
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=600&fit=crop" alt="Presentation">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Business Proposal</h4><span>Presentations</span></div>
+</div>
 
-<!-- Publications & Reports -->
+<!-- Publications & Reports - 5 images -->
 <div class="work-item" data-category="publications">
-<img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=500&h=500&fit=crop" alt="Publication">
+<img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=600&h=600&fit=crop" alt="Publication">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>Annual Report</h4><span>Publications & Reports</span></div>
 </div>
 <div class="work-item" data-category="publications">
-<img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&h=500&fit=crop" alt="Publication">
+<img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&h=600&fit=crop" alt="Publication">
+<div class="zoom-icon">🔍</div>
 <div class="work-overlay"><h4>ESG Report</h4><span>Publications & Reports</span></div>
+</div>
+<div class="work-item" data-category="publications">
+<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&h=600&fit=crop" alt="Publication">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Magazine Design</h4><span>Publications & Reports</span></div>
+</div>
+<div class="work-item" data-category="publications">
+<img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=600&fit=crop" alt="Publication">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Book Layout</h4><span>Publications & Reports</span></div>
+</div>
+<div class="work-item" data-category="publications">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=600&fit=crop" alt="Publication">
+<div class="zoom-icon">🔍</div>
+<div class="work-overlay"><h4>Infographic Report</h4><span>Publications & Reports</span></div>
 </div>
 </div>
 </div>
 </section>
 
-<section class="work-cta">
-
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
-<button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-<img src="" alt="Project" id="lightboxImg">
+<div class="lightbox-header">
 <div class="lightbox-info">
 <h4 id="lightboxTitle"></h4>
 <span id="lightboxCategory"></span>
 </div>
+<div class="lightbox-controls">
+<button class="lightbox-btn" id="zoomBtn" title="Zoom In/Out">🔍</button>
+<button class="lightbox-btn" id="closeBtn" title="Close">✕</button>
+</div>
+</div>
+<button class="lightbox-nav prev" id="prevBtn">❮</button>
+<button class="lightbox-nav next" id="nextBtn">❯</button>
+<div class="lightbox-img-container" id="imgContainer">
+<img src="" alt="Project" id="lightboxImg">
+</div>
+<div class="lightbox-counter"><span id="currentNum">1</span> / <span id="totalNum">30</span></div>
+<div class="zoom-hint" id="zoomHint">Click image or 🔍 to zoom • Drag to pan • ESC to close</div>
 </div>
 
 <section class="work-cta">
@@ -267,45 +363,45 @@ footer .container{flex-direction:column;gap:16px;text-align:center}
 // Mobile Menu
 var menuBtn = document.getElementById('menuBtn');
 var mobileMenu = document.getElementById('mobileMenu');
-
-menuBtn.addEventListener('click', function() {
-    mobileMenu.classList.toggle('open');
-});
-
-function closeMenu() {
-    mobileMenu.classList.remove('open');
-}
+menuBtn.addEventListener('click', function() { mobileMenu.classList.toggle('open'); });
+function closeMenu() { mobileMenu.classList.remove('open'); }
 
 // Category Filter
 var tabs = document.querySelectorAll('.cat-tab');
 var items = document.querySelectorAll('.work-item');
+var filteredItems = [];
+
+function filterItems(cat) {
+    filteredItems = [];
+    items.forEach(function(item, index) {
+        if (cat === 'all' || item.getAttribute('data-category') === cat) {
+            item.style.display = 'block';
+            filteredItems.push(item);
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    document.getElementById('totalNum').textContent = filteredItems.length;
+}
 
 tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
         var cat = this.getAttribute('data-cat');
-        
         tabs.forEach(function(t) { t.classList.remove('active'); });
         this.classList.add('active');
-        
-        items.forEach(function(item) {
-            if (cat === 'all' || item.getAttribute('data-category') === cat) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
+        filterItems(cat);
     });
 });
 
-// Check URL for category filter (from index page links)
+// Initialize
+filterItems('all');
+
+// URL params
 var urlParams = new URLSearchParams(window.location.search);
 var catParam = urlParams.get('cat');
-
 if (catParam) {
     tabs.forEach(function(tab) {
-        if (tab.getAttribute('data-cat') === catParam) {
-            tab.click();
-        }
+        if (tab.getAttribute('data-cat') === catParam) { tab.click(); }
     });
 }
 
@@ -314,37 +410,101 @@ var lightbox = document.getElementById('lightbox');
 var lightboxImg = document.getElementById('lightboxImg');
 var lightboxTitle = document.getElementById('lightboxTitle');
 var lightboxCategory = document.getElementById('lightboxCategory');
+var imgContainer = document.getElementById('imgContainer');
+var currentIndex = 0;
+var isZoomed = false;
 
-items.forEach(function(item) {
-    item.addEventListener('click', function() {
-        var img = this.querySelector('img').src;
-        var title = this.querySelector('h4').textContent;
-        var category = this.querySelector('span').textContent;
-        
-        lightboxImg.src = img.replace('w=500&h=500', 'w=1200&h=1200');
-        lightboxTitle.textContent = title;
-        lightboxCategory.textContent = category;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-});
+function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+    var item = filteredItems[currentIndex];
+    var img = item.querySelector('img').src.replace('w=600&h=600', 'w=1600&h=1600');
+    var title = item.querySelector('h4').textContent;
+    var category = item.querySelector('span').textContent;
+    
+    lightboxImg.src = img;
+    lightboxTitle.textContent = title;
+    lightboxCategory.textContent = category;
+    document.getElementById('currentNum').textContent = currentIndex + 1;
+    
+    // Reset zoom
+    isZoomed = false;
+    lightboxImg.classList.remove('zoomed');
+    lightboxImg.style.transform = '';
+}
 
 function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = 'auto';
+    isZoomed = false;
+    lightboxImg.classList.remove('zoomed');
 }
 
-lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) {
-        closeLightbox();
+function nextImage() {
+    currentIndex = (currentIndex + 1) % filteredItems.length;
+    updateLightbox();
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + filteredItems.length) % filteredItems.length;
+    updateLightbox();
+}
+
+function toggleZoom() {
+    isZoomed = !isZoomed;
+    if (isZoomed) {
+        lightboxImg.classList.add('zoomed');
+        lightboxImg.style.transform = 'scale(2)';
+    } else {
+        lightboxImg.classList.remove('zoomed');
+        lightboxImg.style.transform = '';
     }
+}
+
+// Event Listeners
+items.forEach(function(item, index) {
+    item.addEventListener('click', function() {
+        var idx = filteredItems.indexOf(item);
+        if (idx !== -1) openLightbox(idx);
+    });
+});
+
+document.getElementById('closeBtn').addEventListener('click', closeLightbox);
+document.getElementById('nextBtn').addEventListener('click', nextImage);
+document.getElementById('prevBtn').addEventListener('click', prevImage);
+document.getElementById('zoomBtn').addEventListener('click', toggleZoom);
+
+lightboxImg.addEventListener('click', toggleZoom);
+
+lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox || e.target === imgContainer) closeLightbox();
 });
 
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeLightbox();
-    }
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
 });
+
+// Touch swipe for mobile
+var touchStartX = 0;
+var touchEndX = 0;
+
+imgContainer.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+imgContainer.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) nextImage();
+    if (touchEndX - touchStartX > 50) prevImage();
+}, false);
 </script>
 
 </body>
